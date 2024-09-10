@@ -10,10 +10,11 @@ import SettingsModal from "./modals/SettingsModal";
 import RuleModal from "./modals/RuleModal";
 import ContextModal from "./modals/ContextModal";
 import Dictation from "./Dictation";
+import BrandLabel from "./BrandLabel";  // Import the new BrandLabel component
 import { patients, clinicalInsights, referenceData } from "./data";
 
 function App() {
-  const [selectedPatient, setSelectedPatient] = useState("arthritis"); // Used for switching patients
+  const [selectedPatient, setSelectedPatient] = useState("arthritis");
   const [showReferenceModal, setShowReferenceModal] = useState(false);
   const [referenceContent, setReferenceContent] = useState("");
   const [showSettingsModal, setShowSettingsModal] = useState(false);
@@ -33,11 +34,10 @@ function App() {
   return (
     <div className="container-fluid mt-4">
       <div className="row">
-        {/* Pass the state and setState function for the Rule Modal to Sidebar */}
         <Sidebar
           expanded={sidebarExpanded}
           setExpanded={setSidebarExpanded}
-          setShowRuleModal={setShowRuleModal} // Pass the state for the Rule Modal
+          setShowRuleModal={setShowRuleModal}
           setShowContextModal={setShowContextModal}
         />
         <div className={`col-md-${sidebarExpanded ? 9 : 11}`} style={{ transition: "all 0.3s ease" }}>
@@ -46,9 +46,10 @@ function App() {
               <FaCog />
             </Button>
           </div>
-          <h1>Patient Care Insights</h1>
 
-          {/* Patient details and tabs */}
+          {/* Replace the "Patient Care Insights" text with the new BrandLabel component */}
+          <BrandLabel />
+
           <PatientDetails patient={patient} referenceData={referenceData} handleReferenceClick={handleReferenceClick} />
           <PatientTabs
             patient={patient}
@@ -57,7 +58,6 @@ function App() {
             referenceData={referenceData}
           />
 
-          {/* Add buttons for switching between patients */}
           <div className="mt-4">
             <Button variant="success" onClick={() => setSelectedPatient("arthritis")}>
               Switch to Arthritis Patient
@@ -69,15 +69,21 @@ function App() {
         </div>
       </div>
 
-      {/* Modal components */}
       <ReferenceModal show={showReferenceModal} onHide={() => setShowReferenceModal(false)} content={referenceContent} />
       <SettingsModal show={showSettingsModal} onHide={() => setShowSettingsModal(false)} />
-      <RuleModal show={showRuleModal} onHide={() => setShowRuleModal(false)} /> {/* Rule Modal */}
+      <RuleModal show={showRuleModal} onHide={() => setShowRuleModal(false)} />
       <ContextModal show={showContextModal} onHide={() => setShowContextModal(false)} />
       <Dictation show={showDictation} onHide={() => setShowDictation(false)} />
       <Button
         variant="light"
-        style={{ position: "fixed", bottom: "20px", right: "20px", borderRadius: "50%", width: "60px", height: "60px" }}
+        style={{
+          position: "fixed",
+          bottom: "20px",
+          right: "20px",
+          borderRadius: "50%",
+          width: "60px",
+          height: "60px",
+        }}
         onClick={() => setShowDictation(!showDictation)}
       >
         <FaMicrophone size={30} />
