@@ -16,8 +16,7 @@ const Sidebar = ({ expanded, setExpanded, setShowRuleModal, setShowContextModal,
           <li className="list-group-item" onClick={() => setShowContextModal(true)} style={{ cursor: "pointer" }}>
             Patient Context
           </li>
-          {/* New menu item for Data Duration */}
-          <li className="list-group-item" onClick={() => setShowDurationModal(true)} style={{ cursor: "pointer" }}>
+                    <li className="list-group-item" onClick={() => setShowDurationModal(true)} style={{ cursor: "pointer" }}>
             Data Duration Settings
           </li>
         </ul>

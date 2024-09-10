@@ -10,6 +10,10 @@ export const patients = {
       education: "High school",
     },
     priorConsultations: ["Joint Pain, Feb 2023", "Knee Swelling, March 2023"],
+    priorNotes: [
+      "Patient has reported joint pain worsening over the past 3 months.",
+      "Previous treatment included ibuprofen and physical therapy."
+    ], // Adding Prior Notes for Arthritis
     radiology: {
       summary: "Moderate degeneration of the knee joint.",
       findings: "Osteophyte formation, joint space narrowing.",
@@ -36,6 +40,10 @@ export const patients = {
       education: "College graduate",
     },
     priorConsultations: ["Asthma attack, March 2023", "Breathing difficulties, May 2023"],
+    priorNotes: [
+      "Patient's asthma has been managed with inhalers, with increasing difficulty during the pollen season.",
+      "Last visit included prescription of a stronger antihistamine."
+    ], // Adding Prior Notes for Asthma
     radiology: {
       summary: "Normal chest X-ray.",
       findings: "No acute infection. Mild bronchial thickening.",

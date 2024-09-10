@@ -4,10 +4,9 @@ import { FaInfoCircle } from "react-icons/fa";
 
 const PatientTabs = ({ patient, insights, handleReferenceClick, referenceData }) => (
   <Tabs defaultActiveKey="preVisit" id="visit-tabs">
-    {/* Pre-Visit */}
-    <Tab eventKey="preVisit" title="Pre-Visit Review">
+        <Tab eventKey="preVisit" title="Pre-Visit">
       <Card className="mt-3">
-        <Card.Header>Pre-Visit Overview</Card.Header>
+        <Card.Header>Pre-Visit Review</Card.Header>
         <Card.Body>
           <h5>
             Reason for Visit
@@ -34,22 +33,22 @@ const PatientTabs = ({ patient, insights, handleReferenceClick, referenceData })
           </ul>
 
           <h5>
-            Radiology Results
+            Prior Notes
             <FaInfoCircle
-              onClick={() => handleReferenceClick(referenceData.radiologySummary)}
+              onClick={() => handleReferenceClick(referenceData.priorNotes)}
               style={{ cursor: "pointer", marginLeft: "10px" }}
               title="See reference"
             />
           </h5>
-          <p>
-            <strong>Summary:</strong> {patient.radiology.summary}
-          </p>
-          <p>
-            <strong>Findings:</strong> {patient.radiology.findings}
-          </p>
-          <p>
-            <strong>Recommendations:</strong> {patient.radiology.recommendations}
-          </p>
+          <ul>
+            {patient.priorNotes ? (
+              patient.priorNotes.map((note, index) => (
+                <li key={index}>{note}</li>
+              ))
+            ) : (
+              <p>No prior notes available.</p>
+            )}
+          </ul>
 
           <h5>Social Determinants of Health</h5>
           <Table striped bordered hover>
@@ -84,12 +83,32 @@ const PatientTabs = ({ patient, insights, handleReferenceClick, referenceData })
           </ul>
         </Card.Body>
       </Card>
+
+      <Card className="mt-3">
+        <Card.Header>Patient Tests Summary</Card.Header>
+        <Card.Body>
+          <h5>Radiology Results</h5>
+          <FaInfoCircle
+            onClick={() => handleReferenceClick(referenceData.radiologySummary)}
+            style={{ cursor: "pointer", marginLeft: "10px" }}
+            title="See reference"
+          />
+          <p>
+            <strong>Summary:</strong> {patient.radiology.summary}
+          </p>
+          <p>
+            <strong>Findings:</strong> {patient.radiology.findings}
+          </p>
+          <p>
+            <strong>Recommendations:</strong> {patient.radiology.recommendations}
+          </p>
+        </Card.Body>
+      </Card>
     </Tab>
 
-    {/* During Visit */}
-    <Tab eventKey="duringVisit" title="Clinical Risk Assessment">
+        <Tab eventKey="duringVisit" title="During-Visit">
       <Card className="mt-3">
-        <Card.Header>During Visit: Clinical Risk Assessment</Card.Header>
+        <Card.Header>Clinical Risk Assessment</Card.Header>
         <Card.Body>
           <h5>Existing Conditions</h5>
           <ul>
@@ -144,10 +163,9 @@ const PatientTabs = ({ patient, insights, handleReferenceClick, referenceData })
       </Card>
     </Tab>
 
-    {/* Post-Visit */}
-    <Tab eventKey="postVisit" title="CDI & Documentation Review">
+        <Tab eventKey="postVisit" title="After-Visit">
       <Card className="mt-3">
-        <Card.Header>Post-Visit: CDI & Documentation Improvement</Card.Header>
+        <Card.Header>CDI & Documentation Review</Card.Header>
         <Card.Body>
           <h5>CDI Insights</h5>
           <Alert variant="info">

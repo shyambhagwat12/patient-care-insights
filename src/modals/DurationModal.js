@@ -5,7 +5,7 @@ const DurationModal = ({ show, onHide, onSubmit }) => {
   const [selectedTimeFrame, setSelectedTimeFrame] = useState("All");
 
   const handleSubmit = () => {
-    onSubmit(selectedTimeFrame); // Pass the selected time frame back to the App component
+    onSubmit(selectedTimeFrame); 
   };
 
   return (

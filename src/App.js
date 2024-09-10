@@ -9,17 +9,20 @@ import ReferenceModal from "./modals/ReferenceModal";
 import SettingsModal from "./modals/SettingsModal";
 import RuleModal from "./modals/RuleModal";
 import ContextModal from "./modals/ContextModal";
+import DurationModal from "./modals/DurationModal";
 import Dictation from "./Dictation";
-import BrandLabel from "./BrandLabel";  // Import the new BrandLabel component
+import BrandLabel from "./BrandLabel";  
 import { patients, clinicalInsights, referenceData } from "./data";
 
 function App() {
-  const [selectedPatient, setSelectedPatient] = useState("arthritis");
+  const [selectedPatient, setSelectedPatient] = useState("arthritis"); 
   const [showReferenceModal, setShowReferenceModal] = useState(false);
   const [referenceContent, setReferenceContent] = useState("");
   const [showSettingsModal, setShowSettingsModal] = useState(false);
   const [showRuleModal, setShowRuleModal] = useState(false);
   const [showContextModal, setShowContextModal] = useState(false);
+  const [showDurationModal, setShowDurationModal] = useState(false); 
+  const [timeFrame, setTimeFrame] = useState("All"); 
   const [showDictation, setShowDictation] = useState(false);
   const [sidebarExpanded, setSidebarExpanded] = useState(false);
 
@@ -31,14 +34,20 @@ function App() {
     setShowReferenceModal(true);
   };
 
+  const handleDurationSubmit = (selectedTimeFrame) => {
+    setTimeFrame(selectedTimeFrame); 
+    setShowDurationModal(false); 
+  };
+
   return (
     <div className="container-fluid mt-4">
       <div className="row">
-        <Sidebar
+                <Sidebar
           expanded={sidebarExpanded}
           setExpanded={setSidebarExpanded}
           setShowRuleModal={setShowRuleModal}
           setShowContextModal={setShowContextModal}
+          setShowDurationModal={setShowDurationModal} 
         />
         <div className={`col-md-${sidebarExpanded ? 9 : 11}`} style={{ transition: "all 0.3s ease" }}>
           <div className="d-flex justify-content-end mb-3">
@@ -47,18 +56,27 @@ function App() {
             </Button>
           </div>
 
-          {/* Replace the "Patient Care Insights" text with the new BrandLabel component */}
-          <BrandLabel />
+                    <BrandLabel />
 
-          <PatientDetails patient={patient} referenceData={referenceData} handleReferenceClick={handleReferenceClick} />
+                    <div className="time-frame-section mt-4">
+            <h5 style={{ marginBottom: "10px" }}><strong>Data Time Frame:</strong></h5>
+            <p style={{ fontSize: "1.2rem", color: "#333" }}>{timeFrame}</p>
+          </div>
+
+          <PatientDetails
+            patient={patient}
+            referenceData={referenceData}
+            handleReferenceClick={handleReferenceClick}
+          />
           <PatientTabs
             patient={patient}
             insights={insights}
             handleReferenceClick={handleReferenceClick}
             referenceData={referenceData}
+            timeFrame={timeFrame} 
           />
 
-          <div className="mt-4">
+                    <div className="mt-4">
             <Button variant="success" onClick={() => setSelectedPatient("arthritis")}>
               Switch to Arthritis Patient
             </Button>
@@ -69,21 +87,19 @@ function App() {
         </div>
       </div>
 
-      <ReferenceModal show={showReferenceModal} onHide={() => setShowReferenceModal(false)} content={referenceContent} />
+            <ReferenceModal show={showReferenceModal} onHide={() => setShowReferenceModal(false)} content={referenceContent} />
       <SettingsModal show={showSettingsModal} onHide={() => setShowSettingsModal(false)} />
       <RuleModal show={showRuleModal} onHide={() => setShowRuleModal(false)} />
       <ContextModal show={showContextModal} onHide={() => setShowContextModal(false)} />
+      <DurationModal
+        show={showDurationModal}
+        onHide={() => setShowDurationModal(false)}
+        onSubmit={handleDurationSubmit} 
+      />
       <Dictation show={showDictation} onHide={() => setShowDictation(false)} />
       <Button
         variant="light"
-        style={{
-          position: "fixed",
-          bottom: "20px",
-          right: "20px",
-          borderRadius: "50%",
-          width: "60px",
-          height: "60px",
-        }}
+        style={{ position: "fixed", bottom: "20px", right: "20px", borderRadius: "50%", width: "60px", height: "60px" }}
         onClick={() => setShowDictation(!showDictation)}
       >
         <FaMicrophone size={30} />
