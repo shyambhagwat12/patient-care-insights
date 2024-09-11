@@ -24,7 +24,7 @@ function App() {
   const [showRuleModal, setShowRuleModal] = useState(false);
   const [showContextModal, setShowContextModal] = useState(false);
   const [showDurationModal, setShowDurationModal] = useState(false); 
-  const [timeFrame, setTimeFrame] = useState("All"); 
+  const [timeFrame, setTimeFrame] = useState("All");  // Time Frame state
   const [showDictation, setShowDictation] = useState(false);
   const [sidebarExpanded, setSidebarExpanded] = useState(false);
 
@@ -43,27 +43,20 @@ function App() {
 
   return (
     <div className="app-container">
-      {/* Add the HeaderBar at the top */}
-      <HeaderBar />
+      {/* Pass the timeFrame prop to the HeaderBar */}
+      <HeaderBar timeFrame={timeFrame} />
 
       <div className="main-section">
         <Sidebar
-          expanded={sidebarExpanded}
-          setExpanded={setSidebarExpanded}
+          expanded={sidebarExpanded} /* Pass expanded state */
+          setExpanded={setSidebarExpanded} /* Pass toggle function */
           setShowRuleModal={setShowRuleModal}
           setShowContextModal={setShowContextModal}
           setShowDurationModal={setShowDurationModal}
           setShowSettingsModal={setShowSettingsModal}  /* Pass the settings modal handler */
         />
 
-        <div className="main-content">
-          <BrandLabel />
-
-          <div className="time-frame-section mt-4">
-            <h5 style={{ marginBottom: "10px" }}><strong>Data Time Frame:</strong></h5>
-            <p style={{ fontSize: "1.2rem", color: "#333" }}>{timeFrame}</p>
-          </div>
-
+        <div className={`main-content ${sidebarExpanded ? "expanded" : ""}`}>
           <PatientDetails
             patient={patient}
             referenceData={referenceData}

@@ -36,13 +36,21 @@
     transform: rotate(360deg);
   }
 }
+
+/* App.css */
 .app-container {
   display: flex;
   flex-direction: column;
-  height: 100vh; /* Full viewport height */
+  height: 100vh;
+  overflow: hidden; /* Prevent overflow from header */
 }
 
 .header-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -51,29 +59,38 @@
   padding: 20px 40px;
   height: 80px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  z-index: 1;
 }
 
 .main-section {
   display: flex;
   flex: 1;
+  margin-top: 80px; /* Push content down to avoid being hidden behind the header */
 }
 
 .sidebar {
-  width: 250px;
+  width: 60px; /* Collapsed width */
   background-color: #34495e;
-  height: 100%;
-  position: fixed;
-  top: 80px; /* Respect the space taken by the header bar */
-  transition: width 0.3s ease;
+  height: calc(100vh - 80px); /* Height adjusted to account for the fixed header */
+  transition: width 0.3s ease; /* Smooth transition between expanded/collapsed */
+  position: relative;
+}
+
+.sidebar.expanded {
+  width: 250px; /* Expanded width */
 }
 
 .main-content {
-  margin-left: 250px;
-  flex: 1;
+  margin-left: 10px; /* Adjust for collapsed sidebar */
   padding: 20px;
+  flex-grow: 1;
   overflow-y: auto;
+  height: calc(100vh - 80px); /* Content height excluding header */
   background-color: #f8f9fa;
+  transition: margin-left 0.3s ease; /* Smooth transition when sidebar expands */
+}
+
+.main-content.expanded {
+  margin-left: 250px; /* Adjust for expanded sidebar */
 }
 
 .header-title h1 {
