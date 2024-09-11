@@ -1,7 +1,7 @@
 import React from 'react';
 
 
-import patientFlowIcon from './patient_flow.png'; 
+import patientFlowIcon from './logo-black.png'; 
 
 const BrandLabel = () => {
   return (
