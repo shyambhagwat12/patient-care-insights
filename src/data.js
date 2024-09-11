@@ -13,7 +13,7 @@ export const patients = {
     priorNotes: [
       "Patient has reported joint pain worsening over the past 3 months.",
       "Previous treatment included ibuprofen and physical therapy."
-    ], // Adding Prior Notes for Arthritis
+    ], 
     radiology: {
       summary: "Moderate degeneration of the knee joint.",
       findings: "Osteophyte formation, joint space narrowing.",
@@ -43,7 +43,7 @@ export const patients = {
     priorNotes: [
       "Patient's asthma has been managed with inhalers, with increasing difficulty during the pollen season.",
       "Last visit included prescription of a stronger antihistamine."
-    ], // Adding Prior Notes for Asthma
+    ], 
     radiology: {
       summary: "Normal chest X-ray.",
       findings: "No acute infection. Mild bronchial thickening.",

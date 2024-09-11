@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { FaMicrophone } from "react-icons/fa";
+import { FaComments } from "react-icons/fa"; 
 import Sidebar from "./Sidebar";
 import PatientDetails from "./PatientDetails";
 import PatientTabs from "./PatientTabs";
@@ -13,9 +13,11 @@ import Dictation from "./Dictation";
 import BrandLabel from "./BrandLabel";  
 import { Button } from "react-bootstrap";
 import { patients, clinicalInsights, referenceData } from "./data";
-import HeaderBar from "./HeaderBar"; // Import the HeaderBar component
-import "./App.css";  // Custom CSS for layout
+import HeaderBar from "./HeaderBar";
+import ChatPanel from "./ChatPanel"; 
+import "./App.css";
 
+import { ReactComponent as ChatIcon } from "./icon-copilot.svg"; 
 function App() {
   const [selectedPatient, setSelectedPatient] = useState("arthritis"); 
   const [showReferenceModal, setShowReferenceModal] = useState(false);
@@ -23,9 +25,9 @@ function App() {
   const [showSettingsModal, setShowSettingsModal] = useState(false);
   const [showRuleModal, setShowRuleModal] = useState(false);
   const [showContextModal, setShowContextModal] = useState(false);
-  const [showDurationModal, setShowDurationModal] = useState(false); 
-  const [timeFrame, setTimeFrame] = useState("All");  // Time Frame state
-  const [showDictation, setShowDictation] = useState(false);
+  const [showDurationModal, setShowDurationModal] = useState(false);
+  const [timeFrame, setTimeFrame] = useState("All");
+  const [showChatPanel, setShowChatPanel] = useState(false); 
   const [sidebarExpanded, setSidebarExpanded] = useState(false);
 
   const patient = patients[selectedPatient];
@@ -37,26 +39,30 @@ function App() {
   };
 
   const handleDurationSubmit = (selectedTimeFrame) => {
-    setTimeFrame(selectedTimeFrame); 
-    setShowDurationModal(false); 
+    setTimeFrame(selectedTimeFrame);
+    setShowDurationModal(false);
   };
+
+  const handleChatOpen = () => setShowChatPanel(true); 
+  const handleChatClose = () => setShowChatPanel(false); 
 
   return (
     <div className="app-container">
-      {/* Pass the timeFrame prop to the HeaderBar */}
+      
       <HeaderBar timeFrame={timeFrame} />
 
       <div className="main-section">
         <Sidebar
-          expanded={sidebarExpanded} /* Pass expanded state */
-          setExpanded={setSidebarExpanded} /* Pass toggle function */
+          expanded={sidebarExpanded} 
+          setExpanded={setSidebarExpanded}
           setShowRuleModal={setShowRuleModal}
           setShowContextModal={setShowContextModal}
           setShowDurationModal={setShowDurationModal}
-          setShowSettingsModal={setShowSettingsModal}  /* Pass the settings modal handler */
+          setShowSettingsModal={setShowSettingsModal}
         />
 
         <div className={`main-content ${sidebarExpanded ? "expanded" : ""}`}>
+
           <PatientDetails
             patient={patient}
             referenceData={referenceData}
@@ -67,7 +73,7 @@ function App() {
             insights={insights}
             handleReferenceClick={handleReferenceClick}
             referenceData={referenceData}
-            timeFrame={timeFrame} 
+            timeFrame={timeFrame}
           />
 
           <div className="mt-4">
@@ -81,6 +87,18 @@ function App() {
         </div>
       </div>
 
+      
+      <Button
+        variant="light"
+        style={{ position: "fixed", bottom: "20px", right: "20px", borderRadius: "50%", width: "60px", height: "60px" }}
+        onClick={handleChatOpen}
+      >
+        <ChatIcon width={30} height={30} /> 
+      </Button>
+
+      
+      <ChatPanel show={showChatPanel} handleClose={handleChatClose} />
+
       <ReferenceModal show={showReferenceModal} onHide={() => setShowReferenceModal(false)} content={referenceContent} />
       <SettingsModal show={showSettingsModal} onHide={() => setShowSettingsModal(false)} />
       <RuleModal show={showRuleModal} onHide={() => setShowRuleModal(false)} />
@@ -88,17 +106,8 @@ function App() {
       <DurationModal
         show={showDurationModal}
         onHide={() => setShowDurationModal(false)}
-        onSubmit={handleDurationSubmit} 
+        onSubmit={handleDurationSubmit}
       />
-      <Dictation show={showDictation} onHide={() => setShowDictation(false)} />
-
-      <Button
-        variant="light"
-        style={{ position: "fixed", bottom: "20px", right: "20px", borderRadius: "50%", width: "60px", height: "60px" }}
-        onClick={() => setShowDictation(!showDictation)}
-      >
-        <FaMicrophone size={30} />
-      </Button>
     </div>
   );
 }

@@ -110,3 +110,47 @@
 .header-profile {
   cursor: pointer;
 }
+
+
+.chat-icon-button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #007bff;
+  border: none;
+  color: white;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+}
+
+.chat-icon-button:hover {
+  background-color: #0056b3;
+}
+
+.chat-microphone {
+  position: fixed;
+  bottom: 100px;
+  right: 30px;
+}
+
+.chat-microphone button {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+
+
+

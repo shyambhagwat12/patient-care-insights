@@ -1,11 +1,11 @@
 import React from "react";
 import { FaBars, FaFileCode, FaUser, FaClock, FaCog } from "react-icons/fa";
-import './Sidebar.css'; // Custom CSS for layout
+import './Sidebar.css'; 
 
 const Sidebar = ({ expanded, setExpanded, setShowRuleModal, setShowContextModal, setShowDurationModal, setShowSettingsModal }) => {
   return (
     <div className={`sidebar ${expanded ? "expanded" : ""}`}>
-      {/* Hamburger Menu */}
+      
       <div className="sidebar-header" onClick={() => setExpanded(!expanded)} style={{ cursor: "pointer", padding: "15px 10px" }}>
         <FaBars size={24} />
       </div>
@@ -27,7 +27,7 @@ const Sidebar = ({ expanded, setExpanded, setShowRuleModal, setShowContextModal,
         </ul>
       </div>
 
-      {/* Settings icon placed at the bottom */}
+      
       <div className="sidebar-footer" onClick={() => setShowSettingsModal(true)}>
         <FaCog size={24} />
         {expanded && <span>Settings</span>}
