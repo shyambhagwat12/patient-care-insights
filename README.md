@@ -1,6 +1,14 @@
 # Getting Started 
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This guide will walk you through the steps required to set up and run the project. The setup is divided into five main sections:
+
+1. **Whisper Setup**
+2. **Server-side Code Setup**
+3. **Dataset Setup**
+4. **Microsoft Fabric Setup**
+5. **UI Setup**
+
+# UI Setup
 
 ## Available Scripts
 
