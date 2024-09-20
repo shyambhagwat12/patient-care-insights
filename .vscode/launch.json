@@ -1,0 +1,35 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Debug Server (Node.js)",
+      "type": "node",
+      "request": "launch",
+      "cwd": "${workspaceFolder}/server",  
+      "program": "${workspaceFolder}/server/server.js",  
+      "outFiles": [
+        "${workspaceFolder}/server/**/*.js"
+      ],
+      "console": "integratedTerminal",
+      "runtimeExecutable": "nodemon", // Nodemon for hot-reloading
+      "restart": true,
+      "skipFiles": ["<node_internals>/**"]
+    },
+    {
+      "name": "Run Client Build Watch (React)",
+      "type": "node",
+      "request": "launch",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "watch"],  // Custom watch script for React
+      "cwd": "${workspaceFolder}/client",  // Run the script in the client directory
+      "console": "integratedTerminal",
+      "restart": true
+    }
+  ],
+  "compounds": [
+    {
+      "name": "Debug Server with Client Build Watch",
+      "configurations": ["Debug Server (Node.js)", "Run Client Build Watch (React)"] // Run both concurrently
+    }
+  ]
+}

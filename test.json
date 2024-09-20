@@ -1,0 +1,79 @@
+{
+    "resourceType": "DocumentReference",
+    "id": "117dcd04-1f79-e63e-1253-7ccfb2922371",
+    "meta": {
+        "profile": [
+            "http://hl7.org/fhir/us/core/StructureDefinition/us-core-documentreference"
+        ]
+    },
+    "identifier": [
+        {
+            "system": "urn:ietf:rfc:3986",
+            "value": "urn:uuid:42d5b956-1d5a-1d5c-3c48-1c5db3ba3812"
+        }
+    ],
+    "status": "superseded",
+    "type": {
+        "coding": [
+            {
+                "system": "http://loinc.org",
+                "code": "34117-2",
+                "display": "History and physical note"
+            },
+            {
+                "system": "http://loinc.org",
+                "code": "51847-2",
+                "display": "Evaluation + Plan note"
+            }
+        ]
+    },
+    "category": [
+        {
+            "coding": [
+                {
+                    "system": "http://hl7.org/fhir/us/core/CodeSystem/us-core-documentreference-category",
+                    "code": "clinical-note",
+                    "display": "Clinical Note"
+                }
+            ]
+        }
+    ],
+    "subject": {
+        "reference": "Patient/6a4160eb-a793-2f86-2302-378626f46cce"
+    },
+    "date": "2021-02-22T13:37:35.234-05:00",
+    "author": [
+        {
+            "reference": "Practitioner?identifier=http://hl7.org/fhir/sid/us-npi|9999992990",
+            "display": "Dr. Estell607 Barton704"
+        }
+    ],
+    "custodian": {
+        "reference": "Organization?identifier=https://github.com/synthetichealth/synthea|5b1ee7ed-c5ed-3d63-a54c-bd0d1f2f301b",
+        "display": "SAINT LUKE'S SOUTH HOSPITAL INC"
+    },
+    "content": [
+        {
+            "attachment": {
+                "contentType": "text/plain; charset=utf-8",
+                "data": "CjIwMjEtMDItMjIKCiMgQ2hpZWYgQ29tcGxhaW50Ck5vIGNvbXBsYWludHMuCgojIEhpc3Rvcnkgb2YgUHJlc2VudCBJbGxuZXNzCll2b25lODg5IEphbmluYTE2MwogaXMgYSA1NyB5ZWFyLW9sZCBub25oaXNwYW5pYyB3aGl0ZSBmZW1hbGUuIFBhdGllbnQgaGFzIGEgaGlzdG9yeSBvZiBhY3V0ZSBicm9uY2hpdGlzIChkaXNvcmRlciksIGxpbWl0ZWQgc29jaWFsIGNvbnRhY3QgKGZpbmRpbmcpLCBmdWxsLXRpbWUgZW1wbG95bWVudCAoZmluZGluZyksIGFjdXRlIHZpcmFsIHBoYXJ5bmdpdGlzIChkaXNvcmRlciksIHZpY3RpbSBvZiBpbnRpbWF0ZSBwYXJ0bmVyIGFidXNlIChmaW5kaW5nKSwgdmlyYWwgc2ludXNpdGlzIChkaXNvcmRlciksIHNwcmFpbiBvZiBhbmtsZSwgc3RyZXNzIChmaW5kaW5nKSwgc29jaWFsIGlzb2xhdGlvbiAoZmluZGluZykuCgojIFNvY2lhbCBIaXN0b3J5ClBhdGllbnQgaXMgbWFycmllZC4gUGF0aWVudCBxdWl0IHNtb2tpbmcgYXQgYWdlIDE2LgogUGF0aWVudCBpZGVudGlmaWVzIGFzIGhldGVyb3NleHVhbC4KClBhdGllbnQgY29tZXMgZnJvbSBhIG1pZGRsZSBzb2Npb2Vjb25vbWljIGJhY2tncm91bmQuCiBQYXRpZW50IGhhcyBhIGhpZ2ggc2Nob29sIGVkdWNhdGlvbi4KUGF0aWVudCBjdXJyZW50bHkgaGFzIEFudGhlbS4KCiMgQWxsZXJnaWVzCk5vIEtub3duIEFsbGVyZ2llcy4KCiMgTWVkaWNhdGlvbnMKbGlzaW5vcHJpbCAxMCBtZyBvcmFsIHRhYmxldDsgYWNldGFtaW5vcGhlbiAzMjUgbWcgb3JhbCB0YWJsZXQ7IGFjZXRhbWlub3BoZW4gMjEuNyBtZy9tbCAvIGRleHRyb21ldGhvcnBoYW4gaHlkcm9icm9taWRlIDEgbWcvbWwgLyBkb3h5bGFtaW5lIHN1Y2NpbmF0ZSAwLjQxNyBtZy9tbCBvcmFsIHNvbHV0aW9uOyBoeWRyb2NobG9yb3RoaWF6aWRlIDI1IG1nIG9yYWwgdGFibGV0OyBhbW94aWNpbGxpbiAyNTAgbWcgLyBjbGF2dWxhbmF0ZSAxMjUgbWcgb3JhbCB0YWJsZXQKCiMgQXNzZXNzbWVudCBhbmQgUGxhbgoKCiMjIFBsYW4KUGF0aWVudCB3YXMgZ2l2ZW4gdGhlIGZvbGxvd2luZyBpbW11bml6YXRpb25zOiBzYXJzLWNvdi0yIChjb3ZpZC0xOSkgdmFjY2luZSwgbXJuYSwgc3Bpa2UgcHJvdGVpbiwgbG5wLCBwcmVzZXJ2YXRpdmUgZnJlZSwgMTAwIG1jZy8wLjVtbCBkb3NlLiAK"
+            },
+            "format": {
+                "system": "http://ihe.net/fhir/ihe.formatcode.fhir/CodeSystem/formatcode",
+                "code": "urn:ihe:iti:xds:2017:mimeTypeSufficient",
+                "display": "mimeType Sufficient"
+            }
+        }
+    ],
+    "context": {
+        "encounter": [
+            {
+                "reference": "Encounter/4f8b0816-dd46-3a6b-d16b-438ffdfb85a5"
+            }
+        ],
+        "period": {
+            "start": "2021-02-22T13:37:35-05:00",
+            "end": "2021-02-22T13:52:35-05:00"
+        }
+    }
+}

@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.css": "/static/css/main.41a8042d.css",
+    "main.js": "/static/js/main.91c50345.js",
+    "static/js/845.7316a969.chunk.js": "/static/js/845.7316a969.chunk.js",
+    "static/media/logo-black.png": "/static/media/logo-black.c15f5a29adea33f66a58.png",
+    "static/media/icon-copilot.svg": "/static/media/icon-copilot.e4caa98b01c981313e6284977594d417.svg",
+    "index.html": "/index.html",
+    "main.41a8042d.css.map": "/static/css/main.41a8042d.css.map",
+    "main.91c50345.js.map": "/static/js/main.91c50345.js.map",
+    "845.7316a969.chunk.js.map": "/static/js/845.7316a969.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.41a8042d.css",
+    "static/js/main.91c50345.js"
+  ]
+}

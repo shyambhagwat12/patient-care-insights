@@ -1,0 +1,56 @@
+.header-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #2c3e50;
+  color: white;
+  padding: 20px 40px;
+  height: 80px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.header-title h1 {
+  margin: 0;
+  font-size: 2.5rem;
+}
+
+.header-search input {
+  width: 400px;
+  padding: 10px;
+  font-size: 1rem;
+  border-radius: 20px;
+  border: none;
+  outline: none;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+}
+
+.time-frame-section {
+  display: flex;
+  align-items: center;
+  margin-right: 20px;
+}
+
+.time-frame-label {
+  font-size: 1rem;
+  margin-right: 10px;
+}
+
+.time-frame-value {
+  font-size: 1rem;
+  color: grey; }
+
+.header-profile {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
