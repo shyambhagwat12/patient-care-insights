@@ -1,0 +1,23 @@
+.patientSelection {
+  padding: 20px;
+}
+
+.patientSelection h2 {
+  margin-bottom: 20px;
+}
+
+.patientList {
+  list-style: none;
+  padding: 0;
+  margin-top: 20px;
+}
+
+.patientListItem {
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+  cursor: pointer;
+}
+
+.patientListItem:hover {
+  background-color: #f9f9f9;
+}
