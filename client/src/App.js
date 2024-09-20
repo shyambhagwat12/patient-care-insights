@@ -119,7 +119,7 @@ function App() {
 
       <Button
         variant="light"
-        style={{ position: "fixed", bottom: "20px", right: "20px", borderRadius: "50%", width: "60px", height: "60px" }}
+        style={{ position: "fixed", bottom: "70px", right: "20px", borderRadius: "50%", width: "60px", height: "60px" }}
         onClick={handleChatOpen}
       >
         <ChatIcon width={30} height={30} /> 

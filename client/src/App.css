@@ -4,7 +4,7 @@
   display: flex;
   flex-direction: column;
   height: 100vh;
-  overflow: hidden;
+  /* Removed overflow: hidden; */
 }
 
 .header-bar {
@@ -59,12 +59,14 @@
 @media screen and (max-width: 767px) {
   .main-section {
     flex-direction: column;
+    height: calc(100vh - 80px); /* Fill the viewport height minus header */
+    overflow: hidden;
   }
 
   .sidebar {
     order: 2; /* Move sidebar below main content */
     width: 100%;
-    height: auto;
+    height: 60px; /* Fixed height for bottom sidebar */
     position: fixed;
     bottom: 0;
     left: 0;
@@ -72,14 +74,15 @@
   }
 
   .sidebar.expanded {
-    height: auto; /* Allow the sidebar to expand vertically */
+    height: auto; /* Allow the sidebar to expand vertically if needed */
   }
 
   .main-content {
     order: 1;
     margin-left: 0;
-    margin-bottom: 60px; /* Adjust this value to match the height of the bottom sidebar */
-    height: auto;
+    margin-bottom: 60px; /* Match the bottom sidebar height */
+    height: calc(100vh - 80px - 60px); /* Viewport height minus header and bottom sidebar */
+    overflow-y: auto; /* Enable vertical scrolling */
   }
 
   .main-content.expanded {
