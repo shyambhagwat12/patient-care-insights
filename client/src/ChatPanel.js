@@ -32,7 +32,7 @@ const ChatPanel = ({ show, handleClose, patient }) => {
   };
 
   return (
-    <Offcanvas show={show} onHide={handleClose} placement="end">
+    <Offcanvas show={show} onHide={handleClose} placement="end" className="modalchat">  
       {/* Centered title with icon */}
       <Offcanvas.Header closeButton className="justify-content-center">
         <Offcanvas.Title className="d-flex align-items-center chat-title">
@@ -43,7 +43,7 @@ const ChatPanel = ({ show, handleClose, patient }) => {
 
       {/* Main content inside a Card component */}
       <Offcanvas.Body className="d-flex flex-column justify-content-between">
-        <Card className="p-3 border mb-3" style={{ minHeight: '250px', maxHeight: '350px', overflowY: 'auto' }}>
+        <Card className="p-3 border mb-3" style={{ minHeight: '250px', maxHeight: '350px', overflowY: 'auto'}}>
           {/* Show success or error message */}
           {message && <p>{message}</p>}
 

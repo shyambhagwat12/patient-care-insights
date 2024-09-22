@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Button } from "react-bootstrap";
 import { Routes, Route, useNavigate } from "react-router-dom"; // Import routing components
@@ -32,64 +32,40 @@ function App() {
   const [showChatPanel, setShowChatPanel] = useState(false);
   const [sidebarExpanded, setSidebarExpanded] = useState(false);
 
-  const ws = useRef(null);
-  const [wsReady, setWsReady] = useState(false);
-
   const patients = [
     { id: "arthritis", name: "John Doe", appointmentDate: "2024-09-20" },
     { id: "asthma", name: "Jane Smith", appointmentDate: "2024-09-21" },
   ];
 
+  // Fetch patient data using HTTP REST API instead of WebSocket
   useEffect(() => {
-    // Create WebSocket connection.
-    ws.current = new WebSocket("ws://localhost:3001");
-
-    ws.current.onopen = () => {
-      console.log("WebSocket connection established");
-      setWsReady(true);
-    };
-
-    ws.current.onmessage = (e) => {
-      console.log("Message from server:", e.data);
-      try {
-        const message = JSON.parse(e.data);
-        if (message.error) {
-          setError(message.error);
-        } else if (message.action === "patientData") {
-          setPatientData(message.data);
-          setLoading(false);
-        }
-      } catch (err) {
-        console.error("Error parsing message from server:", err);
-      }
-    };
-
-    ws.current.onclose = () => {
-      console.log("WebSocket connection closed");
-    };
-
-    return () => {
-      if (ws.current) {
-        ws.current.close();
-      }
-    };
-  }, []);
-
-  useEffect(() => {
-    if (wsReady && selectedPatient) {
+    if (selectedPatient) {
       setLoading(true);
       setError(null);
       const selectedPatientData = patients.find((p) => p.id === selectedPatient);
+      
       if (selectedPatientData) {
-        ws.current.send(
-          JSON.stringify({
-            action: "getPatientData",
-            data: { name: selectedPatientData.name },
+        // Send POST request to fetch patient data
+        fetch("http://localhost:3001/getPatientData", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ name: selectedPatientData.name }),
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            setPatientData(data.data); // Assuming the server response contains a "data" field
+            setLoading(false);
           })
-        );
+          .catch((error) => {
+            console.error("Error fetching patient data:", error);
+            setError("Error fetching patient data.");
+            setLoading(false);
+          });
       }
     }
-  }, [selectedPatient, wsReady]);
+  }, [selectedPatient]);
 
   const handleReferenceClick = (content) => {
     setReferenceContent(content);

@@ -7,31 +7,15 @@
   /* Removed overflow: hidden; */
 }
 
-.header-bar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  z-index: 1000;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background-color: #2c3e50;
-  color: white;
-  padding: 20px 40px;
-  height: 80px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
 .main-section {
   display: flex;
   flex: 1;
-  margin-top: 80px;
+  margin-top: 60px;
 }
 
 .sidebar {
   width: 60px;
-  background-color: #34495e;
+  background-color: #575859;
   height: calc(100vh - 80px);
   transition: width 0.3s ease;
   position: relative;
@@ -46,7 +30,7 @@
   padding: 20px;
   flex-grow: 1;
   overflow-y: auto;
-  height: calc(100vh - 80px);
+  height: calc(100vh - 60px);
   background-color: #f8f9fa;
   transition: margin-left 0.3s ease;
 }
@@ -57,9 +41,13 @@
 
 /* New styles for mobile devices */
 @media screen and (max-width: 767px) {
+
+  .modalchat{
+    width: 100% !important;
+  }
   .main-section {
     flex-direction: column;
-    height: calc(100vh - 80px); /* Fill the viewport height minus header */
+    height: calc(100vh - 60px); /* Fill the viewport height minus header */
     overflow: hidden;
   }
 
